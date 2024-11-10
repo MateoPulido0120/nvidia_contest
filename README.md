@@ -16,7 +16,65 @@ I’m **Mateo Pulido**, a Mechatronics Engineer and currently a Generative AI De
 
 To set up the environment for LLRM, follow these steps:
 
+
+## CoppeliaSim Education Installation Guide
+
+### For Linux
+
+1. **Download CoppeliaSim Education**:
+
+   Go to the official [CoppeliaSim website](https://www.coppeliarobotics.com/downloads.html) and select the "Education" version for Linux. Download the compressed file (e.g., `CoppeliaSim_Edu_V4_5_0_Ubuntu20_04.tar.xz`).
+
+2. **Extract the downloaded file**:
+
+   Open a terminal in the location where you downloaded the file and use the following command to extract it:
+   ```bash
+   tar -xf CoppeliaSim_Edu_V4_5_0_Ubuntu20_04.tar.xz
+
+3. **Navigate to the CoppeliaSim directory**:
+    ```bash
+   cd CoppeliaSim_Edu_V4_5_0_Ubuntu20_04
+
+4. **Run CoppeliaSim:**:
+    ```bash
+   ./coppeliaSim.sh
+   # Note: If you encounter permission issues, make the file executable:
+   chmod +x coppeliaSim.sh
+   # (Optional) Create a symbolic link to open CoppeliaSim from any location in the terminal:
+   sudo ln -s /path/to/directory/CoppeliaSim_Edu_V4_5_0_Ubuntu20_04/coppeliaSim.sh /usr/local/bin/coppeliasim
+
+### For Linux
+
+1. **Download CoppeliaSim Education**:
+    Go to the official CoppeliaSim website and select the "Education" version for Windows. Download the .zip file.
+
+2. **Extract the downloaded file**:
+    Right-click on the downloaded .zip file and select Extract All, or use an extraction tool like WinRAR or 7-Zip.
+
+3. **Run CoppeliaSim**:
+    Open the extracted folder and double-click on coppeliaSim.exe to start the application.
+
+4. **Open escene "brazo_robot" in CoppeliaSim**:
+    Located in nvidia_contest/brazo_robot.ttt
+
+5. **Start simulation**:
+    click in ▶ to start simulation
+
+## Run complete proyect
+
 1. **Clone the repository**:
    ```bash
    git clone https://github.com/MateoPulido0120/nvidia_contest.git
    cd nvidia_contest
+
+2. **Install dependencies**:
+   ```bash
+   pip install requirements.txt
+
+3. **Create secretes.toml file at <.streamlit> folder and add Nvidia API_KEY**:
+   ```bash
+   Nvidia_key = "Your API_KEY"
+
+4. **Run app**:
+   ```bash
+   streamlit run app.py
