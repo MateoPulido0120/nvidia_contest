@@ -82,7 +82,6 @@ MarkupSafe==3.0.1
 marshmallow==3.22.0
 matplotlib==3.9.2
 mdurl==0.1.2
-mesop==0.12.6
 more-itertools==10.5.0
 msgpack==1.1.0
 multidict==6.1.0
