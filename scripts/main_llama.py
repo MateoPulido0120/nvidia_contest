@@ -16,7 +16,7 @@ def add(a: int, b: int) -> int:
 
 add_tool = FunctionTool.from_defaults(fn=add)
 
-llm = NVIDIA("meta/llama-3.1-70b-instruct", api_key="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")
+llm = NVIDIA("meta/llama-3.1-70b-instruct", api_key="")
 
 agent = ReActAgent.from_tools([multiply_tool, add_tool], llm=llm, verbose=True)
 

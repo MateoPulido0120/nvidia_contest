@@ -113,7 +113,7 @@ def initialize_session():
         14. Now send the position distance 0.30 (float) to the robot, for this use the "set_postion_q3_tool" function with the input parameter "0.30 (float)", this will return a float value, you must validate that the returned value is equal to the input value "0.30 (float)".
         """
 
-        llm = NVIDIA("meta/llama-3.1-70b-instruct", api_key="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")
+        llm = NVIDIA("meta/llama-3.1-70b-instruct", api_key=st.secrets["Nvidia_key"])
 
         agent_take_objects = ReActAgent.from_tools([get_postion_final_object_tool, calculate_distance_r_tool, calculate_beta_angle_tool,
                                                         calculate_angle_q1_tool, calculate_angle_q2_tool, calculate_distance_q3_tool,
@@ -299,18 +299,18 @@ def on_click_callback():
     if st.session_state.clientID is None:
         st.session_state.clientID = connect_coppeliaSim()
         with col2_c1:
-            st.info("Conectado con CoppeliaSim", icon="ℹ️")
+            st.info("Connected with CoppeliaSim", icon="ℹ️")
 
     with col2_c1:
-        with st.spinner("Analizando entrada de texto..."):
+        with st.spinner("Parsing text input..."):
             human_prompt = st.session_state.human_prompt
             st.session_state.history.append(Message("human", human_prompt))
             response = st.session_state.agent.chat(human_prompt)
             st.session_state.history.append(Message("ai", response))
             st.session_state.human_prompt = ""
-            # get_image('CAM_1')
-            # get_image('CAM_2')
-            # get_image('CAM_3')
+            get_image('CAM_1')
+            get_image('CAM_2')
+            get_image('CAM_3')
 
 def load_css():
     with open("static\styles\styles.css", "r") as f:
