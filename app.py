@@ -19,15 +19,18 @@ import time
 warnings.filterwarnings("ignore", category=DeprecationWarning)
 
 def connect_coppeliaSim():
-    port=19999
-    sim.simxFinish(-1) 
-    clientID=sim.simxStart('127.0.0.1',port,True,True,2000,5)
-    # sim.simxStopSimulation(clientID, )
-    if clientID == 0: 
-        print("conectado a", port)
-        return clientID
-    else:
-        print("No hay conexion")
+    try:
+        port=19999
+        sim.simxFinish(-1) 
+        clientID=sim.simxStart('127.0.0.1',port,True,True,2000,5)
+        # sim.simxStopSimulation(clientID, )
+        if clientID == 0: 
+            print("conectado a", port)
+            return clientID
+        else:
+            print("No hay conexion")
+            return None
+    except:
         return None
 
 def get_image(label_vision_sensor):
@@ -298,19 +301,23 @@ def drop_object() -> None:
 def on_click_callback():
     if st.session_state.clientID is None:
         st.session_state.clientID = connect_coppeliaSim()
-        with col2_c1:
-            st.info("Connected with CoppeliaSim", icon="ℹ️")
+        if st.session_state.clientID is not None:
+            with col2_c1:
+                st.info("Connected with CoppeliaSim", icon="ℹ️")
 
-    with col2_c1:
-        with st.spinner("Parsing text input..."):
-            human_prompt = st.session_state.human_prompt
-            st.session_state.history.append(Message("human", human_prompt))
-            response = st.session_state.agent.chat(human_prompt)
-            st.session_state.history.append(Message("ai", response))
-            st.session_state.human_prompt = ""
-            get_image('CAM_1')
-            get_image('CAM_2')
-            get_image('CAM_3')
+                with st.spinner("Parsing text input..."):
+                    human_prompt = st.session_state.human_prompt
+                    st.session_state.history.append(Message("human", human_prompt))
+                    response = st.session_state.agent.chat(human_prompt)
+                    st.session_state.history.append(Message("ai", response))
+                    st.session_state.human_prompt = ""
+                    get_image('CAM_1')
+                    get_image('CAM_2')
+                    get_image('CAM_3')
+
+        else:
+            with col2_c1:
+                st.warning("You must initialize CoppeliaSim for it to work", icon="ℹ️")
 
 def load_css():
     with open("static\styles\styles.css", "r") as f:
@@ -456,14 +463,3 @@ with col2_c1:
                 on_click=on_click_callback, 
             )
 
-    # if st.button("Conectar a Coppelia"):
-    #     clientID = connect_coppeliaSim()
-    #     if clientID is not None:
-    #         st.session_state.clientID = clientID
-    #         st.info("Conectado a CoppeliaSim", icon="ℹ️")
-
-# st.divider()
-
-# if st.button("stop"):
-#     if st.session_state.clientID is not None:
-#         print(st.session_state.clientID)
