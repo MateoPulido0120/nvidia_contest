@@ -320,15 +320,113 @@ def on_click_callback():
                 st.warning("You must initialize CoppeliaSim for it to work", icon="ℹ️")
 
 def load_css():
-    with open(".streamlit/styles.css", "r") as f:
-        css = f"<style>{f.read()}</style>"
-        st.markdown(css, unsafe_allow_html=True)
+    css = """
+    .block-container {
+        padding-top: 0;
+        margin-top: 40px;   
+    }
+
+    .stSelectbox:first-of-type > div[data-baseweb="select"] > div {
+        color:#2b5da7;
+        background-color: white;
+        padding: 10px;
+        margin-top: -30px;
+    }
+                
+    [data-testid="stForm"]{
+        background-color: #394c5a;
+        border: 1px solid #bac2c9;
+        margin-top: 20px;
+    }
+
+    /* .div.st-emotion-cache-uvn0xz.e1nzilvr5 { */
+    .paragraph_current {
+        background: black; 
+        padding: 10px;
+        border-radius: 5px; 
+        color: #2b5da7;
+    }
+
+    #AppViewBlockSpacer{
+        height: 10px;
+    }
+
+
+    .st-bf{
+        font-family: sans-serif;
+        background-color: white;
+    }
+
+
+    button[data-testid="baseButton-primaryFormSubmit"]{
+        color:#bac2c9;
+        font-family: sans-serif;
+        background: #73c7f1;
+        margin: 5px;
+    }
+    .chat-row {
+        display: flex;
+        margin: 5px;
+        width: 100%;
+        overflow: hidden; /* Evita desbordamientos */
+        align-items: center; 
+    }
+
+    .row-reverse {
+        flex-direction: row-reverse;
+    }
+
+    .chat-bubble {
+        border: 1px solid transparent;
+        padding: 5px 5px;
+        margin: 0px 5px;
+        max-width: 70%;
+        box-sizing: border-box; /* Incluye padding y border en el ancho total */
+    }
+
+    .ai-bubble {
+        background: rgb(240, 242, 246);
+        border-radius: 10px;
+        color: #293742;
+        padding: 5px;
+        word-wrap: break-word; /* Permite que las palabras largas se dividan y ajusten */
+        overflow-wrap: break-word; /* Similar a word-wrap, pero con mayor compatibilidad */
+        white-space: normal; /* Permite que el texto se ajuste a múltiples líneas */
+    }
+
+    .human-bubble {
+        background: linear-gradient(135deg, #293742 0%, #596a77 100%); 
+        color: white;
+        border-radius: 10px;
+        padding: 5px;
+        max-width: 60%; /* Limita el ancho máximo del div */
+        word-wrap: break-word; /* Permite que las palabras largas se dividan y ajusten */
+        overflow-wrap: break-word; /* Similar a word-wrap, pero con mayor compatibilidad */
+        white-space: normal; /* Permite que el texto se ajuste a múltiples líneas */
+    }
+
+    .chat-icon {
+        border-radius: 5px;
+    }
+
+    .image-container {
+        display: flex;                  /* Activa el modelo de caja flex */
+        margin: 0px 10px;
+        justify-content: center;        /* Centra horizontalmente */
+        align-items: center;            /* Centra verticalmente */
+    }
+    """
+    st.markdown(f'<style>{css}</style>', unsafe_allow_html=True)
+
+    # with open(".streamlit/styles.css", "r") as f:
+    #     css = f"<style>{f.read()}</style>"
+    #     st.markdown(css, unsafe_allow_html=True)
 
 initialize_session()
 
 st.set_page_config(layout='wide', initial_sidebar_state="expanded", page_title="LLRAM", page_icon="💡")
 
-# load_css()
+load_css()
 
 images = ["static/CAM_1.png", "static/CAM_2.png", "static/CAM_3.png"]
 
