@@ -11,7 +11,7 @@ from llama_index.core.agent import ReActAgent
 from llama_index.core.agent import FunctionCallingAgent
 from llama_index.core.tools import QueryEngineTool, ToolMetadata
 import math
-from modules import sim
+from utils import sim
 import numpy as np
 import warnings
 import time
