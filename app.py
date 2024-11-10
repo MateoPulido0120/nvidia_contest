@@ -42,7 +42,7 @@ def get_image(label_vision_sensor):
     imagen_array = np.flipud(np.fliplr(imagen_array))
     imagen = Image.fromarray(imagen_array, mode='RGB')
 
-    imagen.save(f"static/images/{label_vision_sensor}.png")
+    imagen.save(f"static/{label_vision_sensor}.png")
 
 @dataclass
 class Message:
@@ -320,7 +320,7 @@ def on_click_callback():
                 st.warning("You must initialize CoppeliaSim for it to work", icon="ℹ️")
 
 def load_css():
-    with open("static\styles\styles.css", "r") as f:
+    with open(".streamlit/styles.css", "r") as f:
         css = f"<style>{f.read()}</style>"
         st.markdown(css, unsafe_allow_html=True)
 
@@ -328,9 +328,9 @@ initialize_session()
 
 st.set_page_config(layout='wide', initial_sidebar_state="expanded", page_title="LLRAM", page_icon="💡")
 
-load_css()
+# load_css()
 
-images = ["static/images/CAM_1.png", "static/images/CAM_2.png", "static/images/CAM_3.png"]
+images = ["static/CAM_1.png", "static/CAM_2.png", "static/CAM_3.png"]
 
 hide_decoration_bar_style = '''
     <style>
@@ -437,8 +437,8 @@ with col2_c1:
                 div = f"""
                     <div class="chat-row 
                         {'' if chat_ph.origin == 'ai' else 'row-reverse'}">
-                        <img class="chat-icon" src="data:image/png;base64,{image_to_base64("static/images/ai_icon.png")  
-                            if chat_ph.origin == 'ai' else image_to_base64("static/images/user_icon.png")}" width=32 height=32>
+                        <img class="chat-icon" src="data:image/png;base64,{image_to_base64("static/ai_icon.png")  
+                            if chat_ph.origin == 'ai' else image_to_base64("static/user_icon.png")}" width=32 height=32>
                         <div class="chat-bubble
                         {'ai-bubble' if chat_ph.origin == 'ai' else 'human-bubble'}">
                             &#8203;{chat_ph.message}
