@@ -463,10 +463,10 @@ with col1_c1:
             st.markdown(
                 """
                 <div style="text-align: justify; padding: 5px; margin: 0px 20px 0px">
-                    <p>The Large Language Robotic Arm Model (LLRM) is an advanced artificial intelligence system that allows users to interact with the robot using natural language commands. 
-                    Featuring natural language processing (NLP), computer vision, and both direct and inverse kinematics, the LLRM translates verbal or textual instructions into precise 
-                    actions while visually interpreting its environment. Ideal for applications in manufacturing and automation, it enhances efficiency and adapts to various tasks based 
-                    on user needs.</p>
+                    <p>The Large Language Robot Arm Model (LLRM) is an advanced use of generative artificial intelligence using ReAct (reasoning and actuation) agents that allows 
+                    users to interact with the robot using natural language commands. Using natural language processing (NLP), computer vision, and forward and inverse kinematics, 
+                    the LLRM translates verbal or textual instructions into precise actions while visually interpreting its environment. Ideal for applications in the social setting 
+                    for the disabled and in the area of ​​manufacturing and automation, it improves efficiency and adapts to various tasks according to the user's needs.</p>
                 </div>
                 """,
                 unsafe_allow_html=True
@@ -560,4 +560,16 @@ with col2_c1:
                 type="primary",
                 on_click=on_click_callback, 
             )
+
+
+    st.markdown("""
+    <div style="background-color: #fae08c; padding: 15px; border-radius: 5px; border: 1px solid #FFEEBA; color: black; width: 80%; margin: auto;">
+        <h4 style="text-align: center; color: black; font-weight: bold;">Notice 🚨</h4>
+        <p style="text-align: justify;">To see the application in action, please run the <strong>CoppeliaSim EDU</strong> simulator in parallel. The application will automatically connect when you send an instruction.</p>
+        <p style="text-align: justify;">Refer to the README in the repository for instructions on setting up the environment properly:</p>
+        <p style="text-align: justify;"><a href="https://github.com/MateoPulido0120/nvidia_contest" target="_blank">https://github.com/MateoPulido0120/nvidia_contest</a></p>
+        <p style="text-align: justify;">Thank you for your interest, and enjoy the experience! 🚀</p>
+    </div>
+    """, unsafe_allow_html=True)
+
 

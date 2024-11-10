@@ -78,3 +78,10 @@ To set up the environment for LLRM, follow these steps:
 4. **Run app**:
    ```bash
    streamlit run app.py
+
+
+## License and Contact
+
+This code is open-licensed and available for anyone who may find it useful. Feel free to use, modify, and share it in your own projects.
+
+If you have any questions or need further assistance, you can reach me at: [mateo010120@gmail.com](mailto:mateo010120@gmail.com).
