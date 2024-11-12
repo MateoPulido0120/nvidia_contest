@@ -6,8 +6,8 @@ The **Large Language Robotic Arm Model (LLRM)** represents a cutting-edge advanc
 
 LLRM enables intuitive voice or text-based control over robotic movements, processing natural language commands into precise, real-time actions, and adapting to dynamic environments. This flexibility makes it ideal for applications in manufacturing and automation, where efficiency and adaptability are essential. Designed for the **NVIDIA and LlamaIndex Developer Contest**, LLRM showcases a powerful fusion of AI and robotics for real-world utility and enhanced user engagement.
 
-[Promotional video](https://www.youtube.com/watch?v=imV_XEKuHHY)
-[Functional video](https://youtu.be/bN-aVxDIASw)
+* [Promotional video](https://www.youtube.com/watch?v=imV_XEKuHHY)
+* [Functional video](https://youtu.be/bN-aVxDIASw)
 
 
 ---
@@ -47,7 +47,7 @@ To set up the environment for LLRM, follow these steps:
    # (Optional) Create a symbolic link to open CoppeliaSim from any location in the terminal:
    sudo ln -s /path/to/directory/CoppeliaSim_Edu_V4_5_0_Ubuntu20_04/coppeliaSim.sh /usr/local/bin/coppeliasim
 
-### For Linux
+### For Windows
 
 1. **Download CoppeliaSim Education**:
     Go to the official CoppeliaSim website and select the "Education" version for Windows. Download the .zip file.
