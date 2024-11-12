@@ -19,6 +19,7 @@ import time
 warnings.filterwarnings("ignore", category=DeprecationWarning)
 
 def connect_coppeliaSim():
+    """Conect to scene CoppeliaSim"""
     try:
         port=19999
         sim.simxFinish(-1) 
@@ -34,6 +35,7 @@ def connect_coppeliaSim():
         return None
 
 def get_image(label_vision_sensor):
+    """Get iamge from scene CoppeliaSim"""
     _, vision_sensor =sim.simxGetObjectHandle(st.session_state.clientID, label_vision_sensor, sim.simx_opmode_blocking)  # Vision sensor
     returnCode, resolution, image = sim.simxGetVisionSensorImage(st.session_state.clientID, vision_sensor, 0, sim.simx_opmode_blocking)
 
@@ -46,10 +48,13 @@ def get_image(label_vision_sensor):
 
 @dataclass
 class Message:
+    """Util class to organize conversation"""
     origin: Literal["human", "ai"]
     message: str
 
 def initialize_session():
+    """Initialize session variables"""
+
     if "history" not in st.session_state:        
         st.session_state['history'] = []
     if 'current_index' not in st.session_state:
@@ -213,6 +218,7 @@ def initialize_session():
         st.session_state.agent = agent
 
 def image_to_base64(path_image):
+    """change an image to base64 form"""
     image = Image.open(path_image)
     img_buffer = BytesIO()
     image.save(img_buffer, format="PNG")
@@ -299,6 +305,8 @@ def drop_object() -> None:
     st.session_state.number_objectParent = None
 
 def on_click_callback():
+    """Manage inputs from user"""
+
     if st.session_state.clientID is None:
         st.session_state.clientID = connect_coppeliaSim()
         if st.session_state.clientID is not None:
@@ -318,8 +326,22 @@ def on_click_callback():
         else:
             with col2_c1:
                 st.warning("You must initialize CoppeliaSim for it to work", icon="ℹ️")
+    else:
+        with col2_c1:
+            st.info("Connected with CoppeliaSim", icon="ℹ️")
+
+            with st.spinner("Parsing text input..."):
+                human_prompt = st.session_state.human_prompt
+                st.session_state.history.append(Message("human", human_prompt))
+                response = st.session_state.agent.chat(human_prompt)
+                st.session_state.history.append(Message("ai", response))
+                st.session_state.human_prompt = ""
+                get_image('CAM_1')
+                get_image('CAM_2')
+                get_image('CAM_3')
 
 def load_css():
+    """Load styles css"""
     css = """
     .block-container {
         padding-top: 0;
@@ -418,10 +440,6 @@ def load_css():
     """
     st.markdown(f'<style>{css}</style>', unsafe_allow_html=True)
 
-    # with open(".streamlit/styles.css", "r") as f:
-    #     css = f"<style>{f.read()}</style>"
-    #     st.markdown(css, unsafe_allow_html=True)
-
 initialize_session()
 
 st.set_page_config(layout='wide', initial_sidebar_state="expanded", page_title="LLRAM", page_icon="💡")
@@ -488,7 +506,6 @@ with col1_c1:
                 """, unsafe_allow_html=True)
             
         with col2_c1_2:
-            # Mostrar la imagen actual
             st.markdown(
                 f"""
                 <div class="image-container">

@@ -6,6 +6,10 @@ The **Large Language Robotic Arm Model (LLRM)** represents a cutting-edge advanc
 
 LLRM enables intuitive voice or text-based control over robotic movements, processing natural language commands into precise, real-time actions, and adapting to dynamic environments. This flexibility makes it ideal for applications in manufacturing and automation, where efficiency and adaptability are essential. Designed for the **NVIDIA and LlamaIndex Developer Contest**, LLRM showcases a powerful fusion of AI and robotics for real-world utility and enhanced user engagement.
 
+[Promotional video](https://www.youtube.com/watch?v=imV_XEKuHHY)
+[Functional video](https://youtu.be/bN-aVxDIASw)
+
+
 ---
 
 ## About Me
