@@ -585,6 +585,8 @@ with col2_c1:
         <p style="text-align: justify;">To see the application in action, please run the <strong>CoppeliaSim EDU</strong> simulator in parallel. The application will automatically connect when you send an instruction.</p>
         <p style="text-align: justify;">Refer to the README in the repository for instructions on setting up the environment properly:</p>
         <p style="text-align: justify;"><a href="https://github.com/MateoPulido0120/nvidia_contest" target="_blank">https://github.com/MateoPulido0120/nvidia_contest</a></p>
+        <p style="text-align: justify;">You can see how the app works in the following video: <a href="https://youtu.be/bN-aVxDIASw" target="_blank">https://youtu.be/bN-aVxDIASw</a> </p>
+        <br>
         <p style="text-align: justify;">Thank you for your interest, and enjoy the experience! 🚀</p>
     </div>
     """, unsafe_allow_html=True)
